@@ -41,27 +41,44 @@ items[counterImages].classList.add('active');
 selections[counterSelection].classList.add('active');
 
 next.addEventListener('click', function(){
-  items[counterImages].classList.remove('active');
-  items[++counterImages].classList.add('active');
-  selections[counterSelection].classList.remove('active');
-  selections[++counterSelection].classList.add('active');
-
-  if(counterImages === imagesArray.length){
-    counterImages = 0;
+  
+  if (counterImages === imagesArray.length - 1 && counterSelection === imagesArray.length - 1){
+    items[counterImages].classList.remove('active');
+    selections[counterSelection].classList.remove('active');
+    counterImages = -1;
+    items[++counterImages].classList.add('active');
+    counterSelection = -1;
+    selections[++counterSelection].classList.add('active');
+    console.log(counterImages);
+    console.log(counterSelection);
+  }else{
+    items[counterImages].classList.remove('active');
+    items[++counterImages].classList.add('active');
+    selections[counterSelection].classList.remove('active');
+    selections[++counterSelection].classList.add('active');
+    console.log(counterImages);
   }
-
-  if(counterSelection === imagesArray.length){
-    counterSelection = 0;
-  }
-
+  
 });
 
 prev.addEventListener('click', function(){
-  items[counterImages].classList.remove('active');
-  items[--counterImages].classList.add('active');
-  selections[counterSelection].classList.remove('active');
-  selections[--counterSelection].classList.add('active');
+  
+  if (counterImages === 0 && counterSelection === 0){
+    items[counterImages].classList.remove('active');
+    selections[counterSelection].classList.remove('active');
+    counterImages = imagesArray.length;
+    items[--counterImages].classList.add('active');
+    counterSelection = imagesArray.length;
+    selections[--counterSelection].classList.add('active');
+    console.log(counterImages);
+    console.log(counterSelection);
+  }else{
+    items[counterImages].classList.remove('active');
+    items[--counterImages].classList.add('active');
+    selections[counterSelection].classList.remove('active');
+    selections[--counterSelection].classList.add('active');
+    console.log(counterImages);
+  }
 
   
-
 });
